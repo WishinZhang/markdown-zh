@@ -1,0 +1,19 @@
+site_name: Markdown 中文文档
+# site_url: http://www.mkdocs.org/
+site_description: Markdown 中文文档.
+
+# repo_url: https://github.com/tomchristie/mkdocs/
+
+pages:
+- ['index.md', '主页']
+- ['overview.md', '概述']
+- ['blockelements.md', '块级元素']
+- ['spanelements.md', '内联元素']
+- ['miscellaneous.md', '其它']
+
+
+# copyright: Copyright &copy; 2014, <a href="https://twitter.com/_tomchristie">Tom Christie</a>.
+# google_analytics: ['UA-27795084-5', 'mkdocs.org']
+
+theme: readthedocs
+repo_url: https://github.com/chengsu/markdown-docs-zh/

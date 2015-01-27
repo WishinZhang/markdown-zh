@@ -23,4 +23,4 @@
 **说明:** 本文翻译自 [John Gruber 的博客][blog], 托管于[Github][github].
 
 [blog]: http://daringfireball.net/projects/markdown/syntax
-[github]: http://gihub.com
+[github]: https://github.com/chengsu/markdown-zh/

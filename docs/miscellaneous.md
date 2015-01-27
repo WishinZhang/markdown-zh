@@ -1,49 +1,39 @@
 <h2 id="misc">其他</h2>
 
-<h3 id="autolink">反斜杠转义</h3>
+<h3 id="autolink">自动链接</h3>
 
-Markdown supports a shortcut style for creating "automatic" links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:
+Markdown 支持一种 "自动" 创建 URL 和 email 地址链接的简短形式: 只需用尖括号包围 URL 或 email 地址即可. 这意味着如果你想为 URL 和 email 链接加上可点击的链接, 你只需要这样写:
 
     <http://example.com/>
 
-Markdown will turn this into:
+Markdown 将把它转化为:
 
     <a href="http://example.com/">http://example.com/</a>
 
-Automatic links for email addresses work similarly, except that
-Markdown will also perform a bit of randomized decimal and hex
-entity-encoding to help obscure your address from address-harvesting
-spambots. For example, Markdown will turn this:
+email 链接也是一样, 除此之外, Markdown 还会随机添加十进制和十六进制字符实体引用来帮助你混淆邮件地址以屏蔽广告和垃圾邮件爬虫. 例如, Markdown 会将如下代码:
 
     <address@example.com>
 
-into something like this:
+转化为:
 
     <a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;
     &#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;
     &#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
     &#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
 
-which will render in a browser as a clickable link to "address@example.com".
+这在浏览器中会渲染为可点击的 "address@example.com" 链接.
 
-(This sort of entity-encoding trick will indeed fool many, if not
-most, address-harvesting bots, but it definitely won't fool all of
-them. It's better than nothing, but an address published in this way
-will probably eventually start receiving spam.)
+(这种字符实体编码的小把戏确实可以欺骗一些简单的广告和垃圾邮件爬虫, 但是不足以欺骗所有爬虫. 虽然聊胜于无, 但是这种形式发布的邮件地址最终还是会收到垃圾邮件的.)
 
 
 
-<h3 id="backslash">自动链接</h3>
+<h3 id="backslash">反斜杠转义</h3>
 
-Markdown allows you to use backslash escapes to generate literal
-characters which would otherwise have special meaning in Markdown's
-formatting syntax. For example, if you wanted to surround a word
-with literal asterisks (instead of an HTML `<em>` tag), you can use
-backslashes before the asterisks, like this:
+Markdown 中可以使用反斜杠转义 Markdown 语法符号为字面量. 例如, 如果你想用星号包围一个单词 (而不是 HTML 的 `<em>` 标签), 你可以在星号前面加反斜杠, 就像这样:
 
     \*literal asterisks\*
 
-Markdown provides backslash escapes for the following characters:
+Markdown 为下面字符提供反斜杠转义:
 
     \   backslash
     `   backtick

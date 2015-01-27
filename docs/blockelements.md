@@ -29,10 +29,9 @@ work best -- and look better -- when you format them with hard breaks.
 
 <h3 id="header">标题</h3>
 
-Markdown supports two styles of headers, [Setext] [1] and [atx] [2].
+Markdown 支持两种形式的标题, [Setext] [1] 和 [atx] [2].
 
-Setext-style headers are "underlined" using equal signs (for first-level
-headers) and dashes (for second-level headers). For example:
+Setext 样式的标题使用的等号来表示一级标题, 使用连字符表示二级标题. 例如:
 
     This is an H1
     =============
@@ -40,10 +39,10 @@ headers) and dashes (for second-level headers). For example:
     This is an H2
     -------------
 
-Any number of underlining `=`'s or `-`'s will work.
+任意长度的 `=` 或 `-` 都是可以的.
 
-Atx-style headers use 1-6 hash characters at the start of the line,
-corresponding to header levels 1-6. For example:
+Atx 样式的标题每行开头使用 1-6 井号,
+对应 1-6 级标题. 例如:
 
     # This is an H1
 
@@ -51,11 +50,7 @@ corresponding to header levels 1-6. For example:
 
     ###### This is an H6
 
-Optionally, you may "close" atx-style headers. This is purely
-cosmetic -- you can use this if you think it looks better. The
-closing hashes don't even need to match the number of hashes
-used to open the header. (The number of opening hashes
-determines the header level.) :
+可选地, 你可以 "关闭" atx 样式的标题. 这纯粹是美化需要 -- 如果你认为这样美观一些就用吧. 关闭标签的井号数量甚至不需要和起始位置的匹配. (起始的井号数量决定了标题的级别.) :
 
     # This is an H1 #
 
@@ -66,10 +61,7 @@ determines the header level.) :
 
 <h3 id="blockquote">块引用</h3>
 
-Markdown uses email-style `>` characters for blockquoting. If you're
-familiar with quoting passages of text in an email message, then you
-know how to create a blockquote in Markdown. It looks best if you hard
-wrap the text and put a `>` before every line:
+Markdown 使用 email 样式的 `>` 字符作为块引用. 如果你熟悉 email 消息中的引用段落, 那么你同样可以在 Markdown 中创建块引用. 最好对引用文本采取强制换行并在每一行行首放一个 `>` :
 
     > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
     > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
@@ -78,8 +70,7 @@ wrap the text and put a `>` before every line:
     > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
     > id sem consectetuer libero luctus adipiscing.
 
-Markdown allows you to be lazy and only put the `>` before the first
-line of a hard-wrapped paragraph:
+Markdown 中可以简便地只在每一个需要强制换行的段落的首行前面加上一个 `>` :
 
     > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
     consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
@@ -88,8 +79,7 @@ line of a hard-wrapped paragraph:
     > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
     id sem consectetuer libero luctus adipiscing.
 
-Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by
-adding additional levels of `>`:
+块引用可以嵌套 (例如, 块引用中包含块引用) , 只需添加额外层级的 `>` 即可:
 
     > This is the first level of quoting.
     >
@@ -97,8 +87,7 @@ adding additional levels of `>`:
     >
     > Back to the first level.
 
-Blockquotes can contain other Markdown elements, including headers, lists,
-and code blocks:
+块引用可以包含 Markdown 元素, 包括标题, 列表和代码块:
 
 	> ## This is a header.
 	>
@@ -109,43 +98,41 @@ and code blocks:
 	>
 	>     return shell_exec("echo $input | $markdown_script");
 
-Any decent text editor should make email-style quoting easy. For
-example, with BBEdit, you can make a selection and choose Increase
-Quote Level from the Text menu.
+任何合适的文本编辑器都应该可以很方便的创建 email 样式的块引用. 例如, 用 BBEdit 就可以选取文本然后从 'Text' 菜单中选择 'Increase
+Quote Level'.
 
 
 <h3 id="list">列表</h3>
 
-Markdown supports ordered (numbered) and unordered (bulleted) lists.
+Markdown 支持有序列表和无序列表.
 
-Unordered lists use asterisks, pluses, and hyphens -- interchangably
--- as list markers:
+无序列表使用星号, 加号, 和连字符 -- 这些符号是可互换的
+-- 最为列表标记:
 
     *   Red
     *   Green
     *   Blue
 
-is equivalent to:
+等价于:
 
     +   Red
     +   Green
     +   Blue
 
-and:
+以及:
 
     -   Red
     -   Green
     -   Blue
 
-Ordered lists use numbers followed by periods:
+有序列表使用数字加句号:
 
     1.  Bird
     2.  McHale
     3.  Parish
 
-It's important to note that the actual numbers you use to mark the
-list have no effect on the HTML output Markdown produces. The HTML
-Markdown produces from the above list is:
+需要注意的是这里的数字序号对于最终生成 HTML 是没有影响的.
+这里 Markdown 输出的 HTML 列表是:
 
     <ol>
     <li>Bird</li>
@@ -153,26 +140,22 @@ Markdown produces from the above list is:
     <li>Parish</li>
     </ol>
 
-If you instead wrote the list in Markdown like this:
+即使你把列表写成这样:
 
     1.  Bird
     1.  McHale
     1.  Parish
 
-or even:
+甚至这样:
 
     3. Bird
     1. McHale
     8. Parish
 
-you'd get the exact same HTML output. The point is, if you want to,
-you can use ordinal numbers in your ordered Markdown lists, so that
-the numbers in your source match the numbers in your published HTML.
-But if you want to be lazy, you don't have to.
+你都讲得到相同的 HTML 输出. 重点是, 如果你希望你的 Markdown 源码中的列表序号匹配输出的 HTML 列表序号, 你应该使用正常的序号 .
+当然, 如果你想简单点, 也可不必这么做.
 
-If you do use lazy list numbering, however, you should still start the
-list with the number 1. At some point in the future, Markdown may support
-starting ordered lists at an arbitrary number.
+即使你使用错误的列表序号, 最终生成的列表仍然会以序号 1 开始. 在未来的版本里, Markdown 可能支持以任意数字作为列表起始序号.
 
 List markers typically start at the left margin, but may be indented by
 up to three spaces. List markers must be followed by one or more spaces

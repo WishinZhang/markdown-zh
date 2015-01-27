@@ -2,20 +2,17 @@
 
 <h3 id="link">链接</h3>
 
-Markdown supports two style of links: *inline* and *reference*.
+Markdown 支持两种链接形式: *内联* 和 *引用*.
 
-In both styles, the link text is delimited by [square brackets].
+这两种形式下链接文本的定界符都是 [中括号].
 
-To create an inline link, use a set of regular parentheses immediately
-after the link text's closing square bracket. Inside the parentheses,
-put the URL where you want the link to point, along with an *optional*
-title for the link, surrounded in quotes. For example:
+要创建内联链接, 只需在链接文本的右括号后面紧接一对圆括号. 圆括号里面放所需的 URL 链接, 还可以放一个 *可选* 的链接标题, 标题要用引号包围. 例如:
 
     This is [an example](http://example.com/ "Title") inline link.
 
     [This link](http://example.net/) has no title attribute.
 
-Will produce:
+将会生成:
 
     <p>This is <a href="http://example.com/" title="Title">
     an example</a> inline link.</p>
@@ -23,83 +20,70 @@ Will produce:
     <p><a href="http://example.net/">This link</a> has no
     title attribute.</p>
 
-If you're referring to a local resource on the same server, you can
-use relative paths:
+如果是引用相同服务器下的本地资源, 还可以用相对路径:
 
     See my [About](/about/) page for details.
 
-Reference-style links use a second set of square brackets, inside
-which you place a label of your choosing to identify the link:
+引用类型的链接放在第二个中括号里, 括号里面放链接标签:
 
     This is [an example][id] reference-style link.
 
-You can optionally use a space to separate the sets of brackets:
+两个中括号之间可以有空格:
 
     This is [an example] [id] reference-style link.
 
-Then, anywhere in the document, you define your link label like this,
-on a line by itself:
+接下来, 在文档中的任意位置, 你可以像下面那样定义链接标签,
+需要单独占一行:
 
     [id]: http://example.com/  "Optional Title Here"
 
-That is:
+也就是:
 
-*   Square brackets containing the link identifier (optionally
-    indented from the left margin using up to three spaces);
-*   followed by a colon;
-*   followed by one or more spaces (or tabs);
-*   followed by the URL for the link;
-*   optionally followed by a title attribute for the link, enclosed
-    in double or single quotes, or enclosed in parentheses.
+*   方括号中包含链接标识符 (可以用三个以上的空白符来添加缩进);
+*   跟着是冒号;
+*   跟着是一个以上的空白符和水平制表符;
+*   跟着是链接的 URL;
+*   跟着是可选的标题属性, 可以用单引号, 双引号, 或者圆括号包围.
 
-The following three link definitions are equivalent:
+以下三个链接的定义是等价的:
 
 	[foo]: http://example.com/  "Optional Title Here"
 	[foo]: http://example.com/  'Optional Title Here'
 	[foo]: http://example.com/  (Optional Title Here)
 
-**Note:** There is a known bug in Markdown.pl 1.0.1 which prevents
-single quotes from being used to delimit link titles.
+**注意:** Markdown.pl 1.0.1 有一个已知的问题就是不能用单引号来包围链接标题.
 
-The link URL may, optionally, be surrounded by angle brackets:
+URL 可以用尖括号包围:
 
     [id]: <http://example.com/>  "Optional Title Here"
 
-You can put the title attribute on the next line and use extra spaces
-or tabs for padding, which tends to look better with longer URLs:
+对于较长的 URL , 为了美观起见, 你可以另起一行放置链接标题, 需要在前面加额外的水平制表符或空格作为内间距:
 
     [id]: http://example.com/longish/path/to/resource/here
         "Optional Title Here"
 
-Link definitions are only used for creating links during Markdown
-processing, and are stripped from your document in the HTML output.
+链接定义只存在于 Markdown 处理期间, 而不会在最终的 HTML 出现.
 
-Link definition names may consist of letters, numbers, spaces, and
-punctuation -- but they are *not* case sensitive. E.g. these two
-links:
+链接定义的名称可以包含字母, 数字, 空格, 和标点符号 -- 但它们 *不是* 大小写敏感的. 例如, 下面两个链接是等价的:
 
 	[link text][a]
 	[link text][A]
 
-are equivalent.
-
-The *implicit link name* shortcut allows you to omit the name of the
-link, in which case the link text itself is used as the name.
-Just use an empty set of square brackets -- e.g., to link the word
-"Google" to the google.com web site, you could simply write:
+*隐含链接名称* 使你可以忽略链接名称, 这时链接文本本身被用于链接名称.
+只用一对空的中括号就可以了 -- 例如, 要链接
+"Google" 这个词到 google.com 网站, 你只用这样写:
 
 	[Google][]
 
-And then define the link:
+同时这样定义链接:
 
 	[Google]: http://google.com/
 
-Because link names may contain spaces, this shortcut even works for
-multiple words in the link text:
+由于链接名称可以包含空格, 甚至链接文本中包含多个单词时这种快捷方式也是可行的:
 
 	Visit [Daring Fireball][] for more information.
 
-And then define the link:
+链接定义如下:
 
 	[Daring Fireball]: http://daringfireball.net/
 

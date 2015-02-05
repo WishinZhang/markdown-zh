@@ -87,12 +87,9 @@ URL 可以用尖括号包围:
 
 	[Daring Fireball]: http://daringfireball.net/
 
-Link definitions can be placed anywhere in your Markdown document. I
-tend to put them immediately after each paragraph in which they're
-used, but if you want, you can put them all at the end of your
-document, sort of like footnotes.
+链接定义可以放在 Markdown 文档的任意位置. 一般倾向于将它们直接放在引用位置下面, 当然, 也可以像底部注释那样, 将它们都放在文档底部.
 
-Here's an example of reference links in action:
+下面是一个引用链接实例:
 
     I get 10 times more traffic from [Google] [1] than from
     [Yahoo] [2] or [MSN] [3].
@@ -101,7 +98,7 @@ Here's an example of reference links in action:
       [2]: http://search.yahoo.com/  "Yahoo Search"
       [3]: http://search.msn.com/    "MSN Search"
 
-Using the implicit link name shortcut, you could instead write:
+要使用默认链接, 可以这样写:
 
     I get 10 times more traffic from [Google][] than from
     [Yahoo][] or [MSN][].
@@ -110,41 +107,30 @@ Using the implicit link name shortcut, you could instead write:
       [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
       [msn]:    http://search.msn.com/    "MSN Search"
 
-Both of the above examples will produce the following HTML output:
+上面两个例子都会输出以下 HTML:
 
     <p>I get 10 times more traffic from <a href="http://google.com/"
     title="Google">Google</a> than from
     <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a>
     or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
 
-For comparison, here is the same paragraph written using
-Markdown's inline link style:
+作为对比, 下面是用 Markdown 内联链接的效果:
 
     I get 10 times more traffic from [Google](http://google.com/ "Google")
     than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
     [MSN](http://search.msn.com/ "MSN Search").
 
-The point of reference-style links is not that they're easier to
-write. The point is that with reference-style links, your document
-source is vastly more readable. Compare the above examples: using
-reference-style links, the paragraph itself is only 81 characters
-long; with inline-style links, it's 176 characters; and as raw HTML,
-it's 234 characters. In the raw HTML, there's more markup than there
-is text.
+引用连接的意义不在于更容易书写, 而在于使得文档更易于阅读. 比较上面两个例子: 使用引用链接的段落只有 81 个字符; 使用内联链接的段落有 176 个字符; 而原始的 HTML 有 234 个字符. 在原始的 HTML 中, 标记比文本还多.
 
-With Markdown's reference-style links, a source document much more
-closely resembles the final output, as rendered in a browser. By
-allowing you to move the markup-related metadata out of the paragraph,
-you can add links without interrupting the narrative flow of your
-prose.
+使用 Markdown 的引用链接, 源码更接近与最终的输出, 就像浏览器中呈现的样子. 通过把标记元数据移出段落,
+你可以不用打断行文而直接添加链接.
 
 
 <h3 id="em">强调</h3>
 
-Markdown treats asterisks (`*`) and underscores (`_`) as indicators of
-emphasis. Text wrapped with one `*` or `_` will be wrapped with an
-HTML `<em>` tag; double `*`'s or `_`'s will be wrapped with an HTML
-`<strong>` tag. E.g., this input:
+Markdown 将星号 (`*`) 和下划线 (`_`) 作为强调标记. 用 `*` 或者 `_` 包裹的文本将会用
+HTML `<em>` 标签包裹; 双 `*` 或者 `_` 将会用 HTML
+`<strong>` 标签包裹. 例如, 下面的输入:
 
     *single asterisks*
 
@@ -154,7 +140,7 @@ HTML `<em>` tag; double `*`'s or `_`'s will be wrapped with an HTML
 
     __double underscores__
 
-will produce:
+会输出:
 
     <em>single asterisks</em>
 
@@ -164,19 +150,15 @@ will produce:
 
     <strong>double underscores</strong>
 
-You can use whichever style you prefer; the lone restriction is that
-the same character must be used to open and close an emphasis span.
+两种形式可以任意选择, 但是同一片段的开关标记必须一致.
 
-Emphasis can be used in the middle of a word:
+强调可以用在单词中:
 
     un*frigging*believable
 
-But if you surround an `*` or `_` with spaces, it'll be treated as a
-literal asterisk or underscore.
+但是如果 `*` 或者 `_` 两边都有空格, 则会被视为星号和下划线的字面量.
 
-To produce a literal asterisk or underscore at a position where it
-would otherwise be used as an emphasis delimiter, you can backslash
-escape it:
+要使用星号和下划线字面量, 需要进行转义, 以区别于强调:
 
     \*this text is surrounded by literal asterisks\*
 
@@ -184,54 +166,50 @@ escape it:
 
 <h3 id="code">代码</h3>
 
-To indicate a span of code, wrap it with backtick quotes (`` ` ``).
-Unlike a pre-formatted code block, a code span indicates code within a
-normal paragraph. For example:
+要输出一个代码片段, 需要使用重音符号 (`` ` ``).
+不同于预格式的代码块, 代码片段只是在普通段落中标识出代码. 例如:
 
     Use the `printf()` function.
 
-will produce:
+会生成:
 
     <p>Use the <code>printf()</code> function.</p>
 
-To include a literal backtick character within a code span, you can use
-multiple backticks as the opening and closing delimiters:
+要在代码片段中包含字面量的重音符号, 可以使用多个重音符号作为起始和结束标记:
 
     ``There is a literal backtick (`) here.``
 
-which will produce this:
+会生成:
 
     <p><code>There is a literal backtick (`) here.</code></p>
 
-The backtick delimiters surrounding a code span may include spaces --
-one after the opening, one before the closing. This allows you to place
-literal backtick characters at the beginning or end of a code span:
+包含代码片段的重音符号可以包含空格 --
+起始标记后一个, 结束标记前一个. 这使你可以在代码片段开始和结束位置使用重音符号的字面量:
 
 	A single backtick in a code span: `` ` ``
 
 	A backtick-delimited string in a code span: `` `foo` ``
 
-will produce:
+会生成:
 
 	<p>A single backtick in a code span: <code>`</code></p>
 
 	<p>A backtick-delimited string in a code span: <code>`foo`</code></p>
 
-With a code span, ampersands and angle brackets are encoded as HTML
-entities automatically, which makes it easy to include example HTML
-tags. Markdown will turn this:
+在代码片段中, 英镑符号和尖括号会被转换成相应的字符实体, 这使得包含 HTML
+标签很容易. Markdown 会将下面的代码:
 
     Please don't use any `<blink>` tags.
 
-into:
+转成:
 
     <p>Please don't use any <code>&lt;blink&gt;</code> tags.</p>
 
-You can write this:
+这样写:
 
     `&#8212;` is the decimal-encoded equivalent of `&mdash;`.
 
-to produce:
+会生成:
 
     <p><code>&amp;#8212;</code> is the decimal-encoded
     equivalent of <code>&amp;mdash;</code>.</p>
@@ -240,37 +218,30 @@ to produce:
 
 <h3 id="img">图片</h3>
 
-Admittedly, it's fairly difficult to devise a "natural" syntax for
-placing images into a plain text document format.
+通常, 要用 "原生" 的语法在纯文本格式中插入图片是很困难的.
 
-Markdown uses an image syntax that is intended to resemble the syntax
-for links, allowing for two styles: *inline* and *reference*.
+Markdown 使用了类似链接的语法来插入图片, 包含两种形式: *内联* 和 *引用*.
 
-Inline image syntax looks like this:
+内联图片语法如下:
 
     ![Alt text](/path/to/img.jpg)
 
     ![Alt text](/path/to/img.jpg "Optional title")
 
-That is:
+也就是:
 
-*   An exclamation mark: `!`;
-*   followed by a set of square brackets, containing the `alt`
-    attribute text for the image;
-*   followed by a set of parentheses, containing the URL or path to
-    the image, and an optional `title` attribute enclosed in double
-    or single quotes.
+*   一个感叹号: `!`;
+*   紧跟着一对方括号, 包含了图片的 `alt`
+    属性;
+*   紧跟着一对圆括号, 包含了图片的 URL 或者路径, 以及一个可选的用单引号或双引号包裹的 `title` 属性.
 
-Reference-style image syntax looks like this:
+引用图片语法如下:
 
     ![Alt text][id]
 
-Where "id" is the name of a defined image reference. Image references
-are defined using syntax identical to link references:
+"id" 是图片引用的名称. 图片引用使用链接定义的相同语法:
 
     [id]: url/to/image  "Optional title attribute"
 
-As of this writing, Markdown has no syntax for specifying the
-dimensions of an image; if this is important to you, you can simply
-use regular HTML `<img>` tags.
+Markdown 没有语法指定图片尺寸; 如果需要指定图片尺寸, 可以使用 HTML `<img>` 标签.
 

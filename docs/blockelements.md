@@ -3,24 +3,17 @@
 
 <h3 id="p">段落和换行</h3>
 
-A paragraph is simply one or more consecutive lines of text, separated
-by one or more blank lines. (A blank line is any line that looks like a
-blank line -- a line containing nothing but spaces or tabs is considered
-blank.) Normal paragraphs should not be indented with spaces or tabs.
+段落就是连续行上的文本, 一个或多个空行划分不同的段落. (空行的含义就只要是看起来是空行就行了 -- 即使包含了 spaces 或者 等空白符也是空行.) 普通段落不应该使用缩进.
 
-The implication of the "one or more consecutive lines of text" rule is
-that Markdown supports "hard-wrapped" text paragraphs. This differs
-significantly from most other text-to-HTML formatters (including Movable
-Type's "Convert Line Breaks" option) which translate every line break
-character in a paragraph into a `<br />` tag.
+段落是由一行或多行连续文本组成的, 这条规则使得 Markdown 支持 "硬换行". 这个其他的文本到HTML转换器有很大不同 (包括 Movable
+Type 的 "Convert Line Breaks" 选项) , 通常这些转换器会将段落中的每个换行都转换为一个 `<br />` 标签.
 
-When you *do* want to insert a `<br />` break tag using Markdown, you
-end a line with two or more spaces, then type return.
+当你 *确实需要* 在 Markdown 中输入 `<br />` 标签, 只需要在行尾加上两个及以上的空格, 然后换行.
 
-Yes, this takes a tad more effort to create a `<br />`, but a simplistic
-"every line break is a `<br />`" rule wouldn't work for Markdown.
-Markdown's email-style [blockquoting][bq] and multi-paragraph [list items][l]
-work best -- and look better -- when you format them with hard breaks.
+确实, 这样输入 `<br />` 麻烦了一点, 但是
+"换行即 `<br />`" 的规则并不适用于 Markdown.
+这时, 用硬换行来格式化 Markdown 中 email 式的 [blockquoting][bq] 以及多段落 [list items][l]
+或许是更好的选择.
 
   [bq]: #blockquote
   [l]:  #list
@@ -157,11 +150,9 @@ Markdown 支持有序列表和无序列表.
 
 即使你使用错误的列表序号, 最终生成的列表仍然会以序号 1 开始. 在未来的版本里, Markdown 可能支持以任意数字作为列表起始序号.
 
-List markers typically start at the left margin, but may be indented by
-up to three spaces. List markers must be followed by one or more spaces
-or a tab.
+List 标记通常从左边开始, 可以用三个及以上的空格来缩进. List 标记后面应该跟一个以上的空格或者一个水平制表符.
 
-To make lists look nice, you can wrap items with hanging indents:
+为了使列表更美观, 可以用悬挂缩进来格式化列表项:
 
     *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
         Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
@@ -169,7 +160,7 @@ To make lists look nice, you can wrap items with hanging indents:
     *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
         Suspendisse id sem consectetuer libero luctus adipiscing.
 
-But if you want to be lazy, you don't have to:
+但是这不是必须的:
 
     *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
     Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
@@ -177,35 +168,32 @@ But if you want to be lazy, you don't have to:
     *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
     Suspendisse id sem consectetuer libero luctus adipiscing.
 
-If list items are separated by blank lines, Markdown will wrap the
-items in `<p>` tags in the HTML output. For example, this input:
+如果列表项中包含空行, Markdown 会在 HTML 输出中用 `<p>` 来包裹他们. 例如, 下面的输入:
 
     *   Bird
     *   Magic
 
-will turn into:
+会输出:
 
     <ul>
     <li>Bird</li>
     <li>Magic</li>
     </ul>
 
-But this:
+但是:
 
     *   Bird
 
     *   Magic
 
-will turn into:
+会输出:
 
     <ul>
     <li><p>Bird</p></li>
     <li><p>Magic</p></li>
     </ul>
 
-List items may consist of multiple paragraphs. Each subsequent
-paragraph in a list item must be indented by either 4 spaces
-or one tab:
+列表项可能包含多个段落. 列表项中的每个段落都必须用 4 个空格或一个水平制表符来缩进:
 
     1.  This is a list item with two paragraphs. Lorem ipsum dolor
         sit amet, consectetuer adipiscing elit. Aliquam hendrerit
@@ -217,9 +205,7 @@ or one tab:
 
     2.  Suspendisse id sem consectetuer libero luctus adipiscing.
 
-It looks nice if you indent every line of the subsequent
-paragraphs, but here again, Markdown will allow you to be
-lazy:
+同上, 悬挂缩进只是为了更美观, 而非强制要求:
 
     *   This is a list item with two paragraphs.
 
@@ -229,29 +215,26 @@ lazy:
 
     *   Another item in the same list.
 
-To put a blockquote within a list item, the blockquote's `>`
-delimiters need to be indented:
+如果列表项中包含块注释 , 块注释标记 `>`
+需要缩进:
 
     *   A list item with a blockquote:
 
         > This is a blockquote
         > inside a list item.
 
-To put a code block within a list item, the code block needs
-to be indented *twice* -- 8 spaces or two tabs:
+如果列表项中有代码块, 代码块需要 *双倍* 缩进-- 8 个空格或者两个水平制表符:
 
     *   A list item with a code block:
 
             <code goes here>
 
 
-It's worth noting that it's possible to trigger an ordered list by
-accident, by writing something like this:
+有时候无意中出发有序列表, 如下面这样的代码:
 
     1986. What a great season.
 
-In other words, a *number-period-space* sequence at the beginning of a
-line. To avoid this, you can backslash-escape the period:
+即使, 如果一行开头满足 *number-period-space* 模式. 可以通过转义点号来避免这种情况:
 
     1986\. What a great season.
 
@@ -259,27 +242,22 @@ line. To avoid this, you can backslash-escape the period:
 
 <h3 id="precode">代码块</h3>
 
-Pre-formatted code blocks are used for writing about programming or
-markup source code. Rather than forming normal paragraphs, the lines
-of a code block are interpreted literally. Markdown wraps a code block
-in both `<pre>` and `<code>` tags.
+预格式化的代码块用于输出编程语言和标记语言. 不同于普通段落, 代码块中的行会被原样呈现. Markdown 会用 `<pre>` 和 `<code>` 标签包围代码块.
 
-To produce a code block in Markdown, simply indent every line of the
-block by at least 4 spaces or 1 tab. For example, given this input:
+要在 Markdown 中插入代码块, 只需要将每一行都缩进 4 个空格或者 1 个水平制表符. 例如, 下面的输入:
 
     This is a normal paragraph:
 
         This is a code block.
 
-Markdown will generate:
+Markdown 会生成:
 
     <p>This is a normal paragraph:</p>
 
     <pre><code>This is a code block.
     </code></pre>
 
-One level of indentation -- 4 spaces or 1 tab -- is removed from each
-line of the code block. For example, this:
+只有一级缩进 --  4 个空格或者 1 个水平制表符 -- 会从代码块中的每一行中移除. 例如:
 
     Here is an example of AppleScript:
 
@@ -287,7 +265,7 @@ line of the code block. For example, this:
             beep
         end tell
 
-will turn into:
+会生成:
 
     <p>Here is an example of AppleScript:</p>
 
@@ -296,38 +274,31 @@ will turn into:
     end tell
     </code></pre>
 
-A code block continues until it reaches a line that is not indented
-(or the end of the article).
+代码块自动扩展直到碰到未使用缩进的文本
+(或者文章结尾).
 
-Within a code block, ampersands (`&`) and angle brackets (`<` and `>`)
-are automatically converted into HTML entities. This makes it very
-easy to include example HTML source code using Markdown -- just paste
-it and indent it, and Markdown will handle the hassle of encoding the
-ampersands and angle brackets. For example, this:
+在代码块内, 英镑符号 (`&`) 和尖括号 (`<` 和 `>`)
+或自动转换为 HTML 字符实体. 这使得用 Markdown 包含 HTML 代码非常容易  -- 只需粘贴并缩进, Markdown 会自动转换字符实体. 例如:
 
         <div class="footer">
             &copy; 2004 Foo Corporation
         </div>
 
-will turn into:
+会生成:
 
     <pre><code>&lt;div class="footer"&gt;
         &amp;copy; 2004 Foo Corporation
     &lt;/div&gt;
     </code></pre>
 
-Regular Markdown syntax is not processed within code blocks. E.g.,
-asterisks are just literal asterisks within a code block. This means
-it's also easy to use Markdown to write about Markdown's own syntax.
+Markdown 的语法在代码块中是无效的的. 例如,
+代码块中的星号只是它的字面量而已. 这使得用 Markdown 来书写 Markdown 自身的语法很容易.
 
 
 
 <h3 id="hr">水平线</h3>
 
-You can produce a horizontal rule tag (`<hr />`) by placing three or
-more hyphens, asterisks, or underscores on a line by themselves. If you
-wish, you may use spaces between the hyphens or asterisks. Each of the
-following lines will produce a horizontal rule:
+如果一行中只有三个以上的连字符, 星号, 或者下划线则会在该位置生成一个 `<hr />` 标签. 星号和连字符之间的空格也是允许的. 下面的例子都会生成一条水平线:
 
     * * *
 
